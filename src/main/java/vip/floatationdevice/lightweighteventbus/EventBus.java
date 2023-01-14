@@ -18,6 +18,7 @@ public class EventBus
      */
     public EventBus register(Object listener)
     {
+        if(listener == null) throw new IllegalArgumentException("Listener can't be null");
         synchronized(listeners)
         {
             if(!listeners.add(listener))
@@ -33,6 +34,7 @@ public class EventBus
      */
     public EventBus unregister(Object listener)
     {
+        if(listener == null) throw new IllegalArgumentException("Listener can't be null");
         synchronized(listeners)
         {
             if(!listeners.remove(listener))
@@ -48,6 +50,7 @@ public class EventBus
      */
     public EventBus post(EventObject event)
     {
+        if(event == null) throw new IllegalArgumentException("Event can't be null");
         /*
          * for all registered event listeners,
          * for all public methods of it,
