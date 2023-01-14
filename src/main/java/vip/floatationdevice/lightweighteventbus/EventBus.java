@@ -6,7 +6,7 @@ import java.util.EventObject;
 import java.util.HashSet;
 
 /**
- * The event bus.
+ * The simple, lightweight event bus implementation, designed to be MT-safe.
  */
 public class EventBus
 {
@@ -14,6 +14,8 @@ public class EventBus
 
     /**
      * Register an event listener object to the event bus.
+     * If the object has implemented the {@link EventListener} interface,
+     * its {@link EventListener#onRegister(EventBus)} will be called.
      * @throws IllegalArgumentException if the object is already registered.
      */
     public EventBus register(Object listener)
@@ -30,6 +32,8 @@ public class EventBus
 
     /**
      * Unregister an event listener object from the event bus.
+     * If the object has implemented the {@link EventListener} interface,
+     * its {@link EventListener#onUnregister(EventBus)} will be called.
      * @throws IllegalArgumentException if the object is not registered.
      */
     public EventBus unregister(Object listener)
@@ -47,6 +51,7 @@ public class EventBus
     /**
      * Post an event object.
      * @param event The event object to post.
+     * @throws IllegalArgumentException if the event object is null.
      */
     public EventBus post(EventObject event)
     {

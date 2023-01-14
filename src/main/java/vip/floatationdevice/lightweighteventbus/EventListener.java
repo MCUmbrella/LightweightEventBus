@@ -1,5 +1,9 @@
 package vip.floatationdevice.lightweighteventbus;
 
+/**
+ * Implementing this allows the event listener to automatically perform specific
+ * actions when it is registered to the event bus or unregistered by the event bus.
+ */
 public interface EventListener
 {
     /**
